@@ -31,7 +31,6 @@ public class TicTacToe extends JApplet
     }
     add(pnJátéktér);
   }
-// Fazsom 
   public void actionPerformed(ActionEvent a) {
     JButton btAktuális=(JButton)a.getSource();
     String játékos;
