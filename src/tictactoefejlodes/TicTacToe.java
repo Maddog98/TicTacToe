@@ -11,7 +11,7 @@ public class TicTacToe extends JApplet
   private JComboBox meretvalszto= new JComboBox(meretek);
   private JButton btÚjJáték=new JButton("Új játék");
   private JLabel lbÜzenet=new JLabel("1. lépés: X");
-  private JButton btGomb[]=new JButton[26];   //1-9-ig kell 10, 13, 26  
+  private JButton btGomb[]=new JButton[10];   //1-9-ig kell 10, 13, 26  
   private int lépésSzám=0;
 
   @Override
@@ -23,13 +23,13 @@ public class TicTacToe extends JApplet
     btÚjJáték.addActionListener(this);
     pnEszköztár.add(lbÜzenet);
     add(pnEszköztár, BorderLayout.NORTH);
-    JPanel pnJátéktér=new JPanel(new GridLayout(5, 5));//3x3,4x4,5x5
+    JPanel pnJátéktér=new JPanel(new GridLayout(3, 3));//3x3,4x4,5x5
     Font betű=new Font("Comic Sans MS", Font.BOLD, 60);
-    /*3x3=9,4x4=16,5x5=25*/
-    for(int i=1; i<=25; i++) {
+    /*3x3=9,4x4=16,5x5=25*/for(int i=1; i<=9; i++) {
       btGomb[i]=new JButton();
       btGomb[i].setFont(betű);
-      pnJátéktér.add(btGomb[i]);
+    //btÚjJáték.setEnabled(false);/*kezdéshez kell majd*/
+      pnJátéktér.add(btGomb[i]).setEnabled(false);
       btGomb[i].addActionListener(this);
     }
     add(pnJátéktér);
@@ -41,7 +41,7 @@ public class TicTacToe extends JApplet
       lépésSzám=0;
       játékos=felirat[(lépésSzám+1)%2];
       lbÜzenet.setText((lépésSzám+1)+". lépés: "+játékos);
-      for(int i=1; i<=9; i++) {
+     /*3x3=9,4x4=16,5x5=25*/for(int i=1; i<=9; i++) {
         btGomb[i].setText("");
         btGomb[i].setEnabled(true);
       }
@@ -55,14 +55,14 @@ public class TicTacToe extends JApplet
       String nyertes=nyertes();
       if(!nyertes.equals("")) {
         lbÜzenet.setText("Eredmény: "+nyertes+" nyert!");
-        for(int i=1; i<=12; i++)
+        for(int i=1; i<=9; i++)
           btGomb[i].setEnabled(false);
       }
       else if(lépésSzám==9)
         lbÜzenet.setText("Eredmény: döntetlen!");
     }
   }
-//sss
+  
   private String nyertes() {
     int[] nyerő={123, 456, 789, 147, 258, 369, 159, 357};
     String százas="", tízes, egyes;
@@ -77,6 +77,3 @@ public class TicTacToe extends JApplet
     return "";
   }
 }
-/*szia bazsa*/ 
-/*szia bazsa*/
-/*ott van*/
