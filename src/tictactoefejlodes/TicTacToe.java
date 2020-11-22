@@ -7,6 +7,8 @@ import javax.swing.*;
 public class TicTacToe extends JApplet
     implements ActionListener {
   private final String[] felirat={"0", "X"};
+  private final String[]meretek={"3x3","4x4","6x6"};
+  private JComboBox meretvalszto= new JComboBox(meretek);
   private JButton btÚjJáték=new JButton("Új játék");
   private JLabel lbÜzenet=new JLabel("1. lépés: X");
   private JButton btGomb[]=new JButton[26];   //1-9-ig kell 10, 13, 26
@@ -17,6 +19,7 @@ public class TicTacToe extends JApplet
     setSize(300, 350);
     JPanel pnEszköztár=new JPanel();
     pnEszköztár.add(btÚjJáték);
+    pnEszköztár.add(meretvalszto);
     btÚjJáték.addActionListener(this);
     pnEszköztár.add(lbÜzenet);
     add(pnEszköztár, BorderLayout.NORTH);
@@ -59,7 +62,7 @@ public class TicTacToe extends JApplet
         lbÜzenet.setText("Eredmény: döntetlen!");
     }
   }
-
+//sss
   private String nyertes() {
     int[] nyerő={123, 456, 789, 147, 258, 369, 159, 357};
     String százas="", tízes, egyes;
