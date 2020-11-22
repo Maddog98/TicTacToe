@@ -76,3 +76,4 @@ public class TicTacToe extends JApplet
 }
 /*szia bazsa*/ 
 /*szia bazsa*/
+/*ott van*/
