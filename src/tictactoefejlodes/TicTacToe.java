@@ -74,4 +74,4 @@ public class TicTacToe extends JApplet
     return "";
   }
 }
-/*szia bazsa*/
+/*szia bazsa*/ 
