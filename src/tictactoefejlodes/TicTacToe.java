@@ -13,7 +13,8 @@ public class TicTacToe extends JApplet
   private JLabel lbÜzenet=new JLabel("1. lépés: X");
   private JButton btGomb[]=new JButton[26];   //1-9-ig kell 10, 13, 26  
   private int lépésSzám=0;
-  private int x=(int)meretvalszto.getSelectedIndex();
+  private int x=9;
+  private int y=3;
   @Override
   public void init() {
     setSize(300, 350);
@@ -23,38 +24,53 @@ public class TicTacToe extends JApplet
     btÚjJáték.addActionListener(this);
     pnEszköztár.add(lbÜzenet);
     add(pnEszköztár, BorderLayout.NORTH);
-    JPanel pnJátéktér=new JPanel(new GridLayout(3, 3));//3x3,4x4,5x5
-    Font betű=new Font("Comic Sans MS", Font.BOLD, 60);
-        switch((int)meretvalszto.getSelectedIndex()) {
-  case 0:
-      general(betű, pnJátéktér, 9);
-      
-    break;
-  case 1:
-    general(betű, pnJátéktér, 12);
-    break;
-  case 2:
-      general(betű, pnJátéktér, 25);
-    break;
-  
-}
+    GridLayout gridLayout = new GridLayout(5,5);
+   JPanel pnJátéktér=new JPanel(gridLayout);//3x3,4x4,5x5  
     
+        
     add(pnJátéktér);
   }
  
-    public void general(Font betű, JPanel pnJátéktér,int x) {
+    public void general(int x) {
         /*3x3=9,4x4=12,5x5=25*/for(int i=1; i<=x; i++) {
+           Font betű=new Font("Comic Sans MS", Font.BOLD, 60);
             btGomb[i]=new JButton();
             btGomb[i].setFont(betű);
             //btÚjJáték.setEnabled(false);/*kezdéshez kell majd*/
             pnJátéktér.add(btGomb[i]).setEnabled(false);
             btGomb[i].addActionListener(this);
+            
+           
         }
             
     }
   public void actionPerformed(ActionEvent a) {
     JButton btAktuális=(JButton)a.getSource();
     String játékos;
+   JComboBox meretvalszto =(JComboBox)a.getSource();
+  int kacsaPocs =meretvalszto.getSelectedIndex();
+      switch(meretvalszto.getSelectedIndex()) {
+  case 0:
+      System.out.println(meretvalszto.getSelectedIndex());
+  x=9;
+      System.out.println(x);
+      general(x);  
+    //gridLayout=new GridLayout(3, 3);
+    break;
+  case 1:
+  x=16;
+    System.out.println(x);
+      general( x);
+   
+    break;
+  case 2:
+       x=25;
+      general( x);
+      
+    break;
+  
+}
+   
     if(btAktuális==btÚjJáték) {
       lépésSzám=0;
       játékos=felirat[(lépésSzám+1)%2];
@@ -62,6 +78,7 @@ public class TicTacToe extends JApplet
      /*3x3=9,4x4=16,5x5=25*/for(int i=1; i<=x; i++) {
         btGomb[i].setText("");
         btGomb[i].setEnabled(true);
+        
       }
     }
     else {  //pnJátéktér nyomógombjai
