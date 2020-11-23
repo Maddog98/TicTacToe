@@ -4,8 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class TicTacToe extends JApplet
-    implements ActionListener {
+public class TicTacToe extends JApplet implements ActionListener {
   private final String[] felirat={"0", "X"};
   private final String[]meretek={"3x3","4x4","5x5"};
   private JComboBox meretvalszto= new JComboBox(meretek);
@@ -24,14 +23,13 @@ public class TicTacToe extends JApplet
     btÚjJáték.addActionListener(this);
     pnEszköztár.add(lbÜzenet);
     add(pnEszköztár, BorderLayout.NORTH);
-    GridLayout gridLayout = new GridLayout(5,5);
-   JPanel pnJátéktér=new JPanel(gridLayout);//3x3,4x4,5x5  
-    
-        
-    add(pnJátéktér);
+        general(x);
+        meretvalszto.addActionListener(this);
   }
  
     public void general(int x) {
+      
+        JPanel pnJátéktér=new JPanel(new GridLayout(3,3));//3x3,4x4,5x5  
         /*3x3=9,4x4=12,5x5=25*/for(int i=1; i<=x; i++) {
            Font betű=new Font("Comic Sans MS", Font.BOLD, 60);
             btGomb[i]=new JButton();
@@ -42,29 +40,35 @@ public class TicTacToe extends JApplet
             
            
         }
-            
+           add(pnJátéktér);  
     }
+  @Override
   public void actionPerformed(ActionEvent a) {
     JButton btAktuális=(JButton)a.getSource();
     String játékos;
-   JComboBox meretvalszto =(JComboBox)a.getSource();
-  int kacsaPocs =meretvalszto.getSelectedIndex();
-      switch(meretvalszto.getSelectedIndex()) {
+   int valami=0;
+   meretvalszto.setSelectedIndex(valami);
+meretvalszto.addActionListener(this);
+  int xyIndex =meretvalszto.getSelectedIndex();
+      switch(xyIndex) {
   case 0:
-      System.out.println(meretvalszto.getSelectedIndex());
+      System.out.println(xyIndex);
   x=9;
+  meretvalszto.setSelectedIndex(x);
       System.out.println(x);
       general(x);  
     //gridLayout=new GridLayout(3, 3);
     break;
   case 1:
   x=16;
+  meretvalszto.setSelectedIndex(x);
     System.out.println(x);
-      general( x);
+      general(x);
    
     break;
   case 2:
        x=25;
+       meretvalszto.setSelectedIndex(x);
       general( x);
       
     break;
