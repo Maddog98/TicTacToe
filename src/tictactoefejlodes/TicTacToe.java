@@ -8,12 +8,15 @@ public class TicTacToe extends JApplet implements ActionListener {
   private final String[] felirat={"0", "X"};
   private final String[]meretek={"3x3","4x4","5x5"};
   private JComboBox meretvalszto= new JComboBox(meretek);
+ private static int y=5;
+  private final JPanel pnJátéktér=new JPanel(new GridLayout(y,y));//3x3,4x4,5x5  
+       
   private JButton btÚjJáték=new JButton("Új játék");
   private JLabel lbÜzenet=new JLabel("1. lépés: X");
   private JButton btGomb[]=new JButton[26];   //1-9-ig kell 10, 13, 26  
   private int lépésSzám=0;
   private int x=9;
-  private int y=3;
+  
   @Override
   public void init() {
     setSize(300, 350);
@@ -24,82 +27,88 @@ public class TicTacToe extends JApplet implements ActionListener {
     pnEszköztár.add(lbÜzenet);
     add(pnEszköztár, BorderLayout.NORTH);
         general(x);
-        meretvalszto.addActionListener(this);
+       meretvalszto.addActionListener(this);
   }
  
     public void general(int x) {
       
-        JPanel pnJátéktér=new JPanel(new GridLayout(3,3));//3x3,4x4,5x5  
-        /*3x3=9,4x4=12,5x5=25*/for(int i=1; i<=x; i++) {
+         /*3x3=9,4x4=12,5x5=25*/for(int i=1; i<=x; i++) {
            Font betű=new Font("Comic Sans MS", Font.BOLD, 60);
             btGomb[i]=new JButton();
             btGomb[i].setFont(betű);
             //btÚjJáték.setEnabled(false);/*kezdéshez kell majd*/
-            pnJátéktér.add(btGomb[i]).setEnabled(false);
+            pnJátéktér.add(btGomb[i]);
             btGomb[i].addActionListener(this);
-            
-           
         }
            add(pnJátéktér);  
-    }
-  @Override
-  public void actionPerformed(ActionEvent a) {
-    JButton btAktuális=(JButton)a.getSource();
-    String játékos;
-   int valami=0;
-   meretvalszto.setSelectedIndex(valami);
-meretvalszto.addActionListener(this);
+           
+    }private void faszom() {
+      
+
   int xyIndex =meretvalszto.getSelectedIndex();
       switch(xyIndex) {
   case 0:
       System.out.println(xyIndex);
   x=9;
-  meretvalszto.setSelectedIndex(x);
+  y=3;
+  pnJátéktér.removeAll();
       System.out.println(x);
       general(x);  
     //gridLayout=new GridLayout(3, 3);
     break;
   case 1:
   x=16;
-  meretvalszto.setSelectedIndex(x);
+  y=4;
+  System.out.println(xyIndex);
+    pnJátéktér.removeAll(); 
     System.out.println(x);
       general(x);
    
     break;
   case 2:
        x=25;
-       meretvalszto.setSelectedIndex(x);
+       y=5;
+        System.out.println(xyIndex);
+    pnJátéktér.removeAll();
+    System.out.println(x);
       general( x);
       
     break;
   
-}
+}}
+    
+  @Override
+  public void actionPerformed(ActionEvent a) {
+      faszom();
+  
+    String játékos;
    
-    if(btAktuális==btÚjJáték) {
-      lépésSzám=0;
-      játékos=felirat[(lépésSzám+1)%2];
-      lbÜzenet.setText((lépésSzám+1)+". lépés: "+játékos);
-     /*3x3=9,4x4=16,5x5=25*/for(int i=1; i<=x; i++) {
-        btGomb[i].setText("");
-        btGomb[i].setEnabled(true);
-        
-      }
-    }
-    else {  //pnJátéktér nyomógombjai
-      lépésSzám++;
-      játékos=felirat[(lépésSzám+1)%2];
-      lbÜzenet.setText((lépésSzám+1)+". lépés: "+játékos);
-      btAktuális.setText(felirat[lépésSzám%2]);
-      btAktuális.setEnabled(false);
-      String nyertes=nyertes();
-      if(!nyertes.equals("")) {
-        lbÜzenet.setText("Eredmény: "+nyertes+" nyert!");
-        for(int i=1; i<=x; i++)
-          btGomb[i].setEnabled(false);
-      }
-      else if(lépésSzám==9)
-        lbÜzenet.setText("Eredmény: döntetlen!");
-    }
+   
+//    if(btAktuális==btÚjJáték) {
+//      lépésSzám=0;
+//      játékos=felirat[(lépésSzám+1)%2];
+//      lbÜzenet.setText((lépésSzám+1)+". lépés: "+játékos);
+//     /*3x3=9,4x4=16,5x5=25*/for(int i=1; i<=x; i++) {
+//        btGomb[i].setText("");
+//        btGomb[i].setEnabled(true);
+//        
+//      }
+//    }
+//    else {  //pnJátéktér nyomógombjai
+//      lépésSzám++;
+//      játékos=felirat[(lépésSzám+1)%2];
+//      lbÜzenet.setText((lépésSzám+1)+". lépés: "+játékos);
+//      btAktuális.setText(felirat[lépésSzám%2]);
+//      btAktuális.setEnabled(false);
+//      String nyertes=nyertes();
+//      if(!nyertes.equals("")) {
+//        lbÜzenet.setText("Eredmény: "+nyertes+" nyert!");
+//        for(int i=1; i<=x; i++)
+//          btGomb[i].setEnabled(false);
+//      }
+//      else if(lépésSzám==9)
+//        lbÜzenet.setText("Eredmény: döntetlen!");
+//    }
   }
   
   private String nyertes() {
@@ -115,4 +124,6 @@ meretvalszto.addActionListener(this);
     }
     return "";
   }
+
+    
 }
