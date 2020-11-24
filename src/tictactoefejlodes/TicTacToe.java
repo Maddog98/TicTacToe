@@ -84,13 +84,7 @@ public class TicTacToe extends JApplet implements ActionListener {
   public void actionPerformed(ActionEvent a) {
       logika();
 JButton btAktuális=(JButton)a.getSource();
-
- 
-  
-
     String játékos;
-   
-   
 //    if(btAktuális==btÚjJáték) {
 //      lépésSzám=0;
 //      játékos=felirat[(lépésSzám+1)%2];
@@ -131,7 +125,7 @@ JButton btAktuális=(JButton)a.getSource();
     }
     return "";
   }
-
+//faszomat ebbe aszarba mostmar
     
 }
 
