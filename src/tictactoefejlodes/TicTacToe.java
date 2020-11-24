@@ -18,9 +18,7 @@ public class TicTacToe extends JApplet
     private JButton btGomb[] = new JButton[26];   //1-9-ig kell 10, 13, 26  
     private int lépésSzám = 0;
     private int x = 9;
-//valtozas
-    //ige
-    //most
+//faszom
     @Override
     public void init() {
         setSize(300, 350);
