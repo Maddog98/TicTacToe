@@ -79,19 +79,15 @@ public class TicTacToe extends JApplet implements ActionListener {
     break;
   
 }}
-<<<<<<< HEAD
- 
+
   @Override
   public void actionPerformed(ActionEvent a) {
       logika();
 JButton btAktuális=(JButton)a.getSource();
-=======
-    
-  @Override
-  public void actionPerformed(ActionEvent a) {
-      logika();
+
+ 
   
->>>>>>> e75c541053fbfbcb51a0082b28210ef58f021e8f
+
     String játékos;
    
    
