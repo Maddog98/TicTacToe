@@ -12,12 +12,13 @@ public class TicTacToe extends JApplet
     private JLabel lbÜzenet = new JLabel("1. lépés: X");
     private JButton btGomb[] = new JButton[26];   //1-9-ig kell 10, 13, 26  
     private int lépésSzám = 0;
-    private final String[] meretek = {"3x3", "4x4", "5x5"};
+        //private final String[] meretek = {"3x3", "4x4", "5x5"};
     private int x = 9;
     private int y = 3;
-    private JComboBox meretvalszto = new JComboBox(meretek);
+    private JComboBox meretvalszto = new JComboBox();
+    
     private final JPanel pnJátéktér = new JPanel(new GridLayout(y, y));//3x3,4x4,5x5  
-//faszom
+
 
     @Override
     public void init() {
@@ -29,6 +30,9 @@ public class TicTacToe extends JApplet
         pnEszköztár.add(lbÜzenet);
         add(pnEszköztár, BorderLayout.NORTH);
         general(x);
+        meretvalszto.addItem("3x3");
+        meretvalszto.addItem("4x4");
+        meretvalszto.addItem("5x5");
         meretvalszto.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 logika();
@@ -50,10 +54,7 @@ public class TicTacToe extends JApplet
         add(pnJátéktér);
 
     }
-// jó irány?
-    // még mindig nem jÓ?
-    //most?
-    //???
+
 
     private void logika() {
 
@@ -101,7 +102,7 @@ public class TicTacToe extends JApplet
 
         JButton btAktuális = (JButton) a.getSource();
         String játékos;
-//       
+     
         if (btAktuális == btÚjJáték) {
             lépésSzám = 0;
             játékos = felirat[(lépésSzám + 1) % 2];
