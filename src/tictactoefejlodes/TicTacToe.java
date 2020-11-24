@@ -19,6 +19,7 @@ public class TicTacToe extends JApplet
     private int lépésSzám = 0;
     private int x = 9;
 //valtozas
+    //ige
     @Override
     public void init() {
         setSize(300, 350);
