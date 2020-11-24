@@ -8,7 +8,7 @@ public class TicTacToe extends JApplet implements ActionListener {
   private final String[] felirat={"0", "X"};
   private final String[]meretek={"3x3","4x4","5x5"};
   private JComboBox meretvalszto= new JComboBox(meretek);
- private static int y=5;
+ private static int y=3;
   private final JPanel pnJátéktér=new JPanel(new GridLayout(y,y));//3x3,4x4,5x5  
        
   private JButton btÚjJáték=new JButton("Új játék");
@@ -42,7 +42,7 @@ public class TicTacToe extends JApplet implements ActionListener {
         }
            add(pnJátéktér);  
            
-    }private void faszom() {
+    }private void logika() {
       
 
   int xyIndex =meretvalszto.getSelectedIndex();
@@ -50,8 +50,9 @@ public class TicTacToe extends JApplet implements ActionListener {
   case 0:
       System.out.println(xyIndex);
   x=9;
-  y=3;
   pnJátéktér.removeAll();
+  y=3;
+  pnJátéktér.setLayout(new GridLayout(y, y));
       System.out.println(x);
       general(x);  
     //gridLayout=new GridLayout(3, 3);
@@ -59,6 +60,7 @@ public class TicTacToe extends JApplet implements ActionListener {
   case 1:
   x=16;
   y=4;
+  pnJátéktér.setLayout(new GridLayout(y, y));
   System.out.println(xyIndex);
     pnJátéktér.removeAll(); 
     System.out.println(x);
@@ -68,10 +70,11 @@ public class TicTacToe extends JApplet implements ActionListener {
   case 2:
        x=25;
        y=5;
-        System.out.println(xyIndex);
+  pnJátéktér.setLayout(new GridLayout(y, y));
+       System.out.println(xyIndex);
     pnJátéktér.removeAll();
     System.out.println(x);
-      general( x);
+      general(x);
       
     break;
   
@@ -79,7 +82,7 @@ public class TicTacToe extends JApplet implements ActionListener {
     
   @Override
   public void actionPerformed(ActionEvent a) {
-      faszom();
+      logika();
   
     String játékos;
    
