@@ -8,17 +8,17 @@ public class TicTacToe extends JApplet
         implements ActionListener {
 
     private final String[] felirat = {"0", "X"};
-    private final String[] meretek = {"3x3", "4x4", "5x5"};
-    private JComboBox meretvalszto = new JComboBox(meretek);
-    private static int y = 3;
-    private final JPanel pnJátéktér = new JPanel(new GridLayout(y, y));//3x3,4x4,5x5  
-
     private JButton btÚjJáték = new JButton("Új játék");
     private JLabel lbÜzenet = new JLabel("1. lépés: X");
     private JButton btGomb[] = new JButton[26];   //1-9-ig kell 10, 13, 26  
     private int lépésSzám = 0;
+    private final String[] meretek = {"3x3", "4x4", "5x5"};
     private int x = 9;
+    private int y = 3;
+    private JComboBox meretvalszto = new JComboBox(meretek);
+    private final JPanel pnJátéktér = new JPanel(new GridLayout(y, y));//3x3,4x4,5x5  
 //faszom
+
     @Override
     public void init() {
         setSize(300, 350);
@@ -125,20 +125,45 @@ public class TicTacToe extends JApplet
                 lbÜzenet.setText("Eredmény: döntetlen!");
             }
         }
+//szám generálás próba 
+//        int[]sorozat=new int[3];
+//        
+//        for (int i = 1; i <= 3; i++) {
+//             sorozat[i] = (int) (Math.random() * 9 + 1);
+//             System.out.println(sorozat[i]);
+//        }
+
+//        for (int i = 1; i <= 16; i++) {
+//             int masodik=(int)(Math.random() * 16 + 1);
+//             System.out.println(masodik);
+//        }
+//        for (int i = 1; i <= 25; i++) {
+//             int harmadik=(int)(Math.random() * 25 + 1);
+//             System.out.println(harmadik);
+//        }
     }
 
     private String nyertes() {
         int[] nyerő = {123, 456, 789, 147, 258, 369, 159, 357};
-        String százas = "", tízes, egyes;
+        int[] nyerő3;
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(i);
+        }
+        String /*tízezres*/ százas = ""/*,ezres,százas*/,tízes,egyes;
+        
         for (int i : nyerő) {
-            százas = btGomb[i / 100].getText();
-            tízes = btGomb[i % 100 / 10].getText();
-            egyes = btGomb[i % 100 % 10].getText();
-            System.out.println("\n" + i + ": " + százas + " " + tízes + " " + egyes);
-            if (százas.equals(tízes) && tízes.equals(egyes)) {
-                return százas;
+//            tízezres = btGomb[i/10000].getText();
+//            ezres = btGomb[i/10000/10].getText();
+            százas = btGomb[i / 100/*00 /10*/].getText();
+            tízes = btGomb[i % 100/*00*/ / 10].getText();
+            egyes = btGomb[i % 100/*00*/ % 10].getText();
+
+            System.out.println("\n" + i + ": "/*+tízezres+" "+ezres +" "*/ + százas + " " + tízes + " " + egyes);
+            if (/*tízezres.equals(ezres)&&ezres.equals(százas)&&*/százas.equals(tízes) && tízes.equals(egyes)) {
+                return /*tízezres*/ százas;
             }
         }
-        return "";
+        return "";        //int[] nyerő = [];
+
     }
 }
