@@ -47,6 +47,7 @@ public class TicTacToe extends JApplet implements ActionListener {
     }
 // jó irány?
     // még mindig nem jÓ?
+    //most?
     private void logika() {
 
         int xyIndex = meretvalszto.getSelectedIndex();
