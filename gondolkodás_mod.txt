@@ -1,0 +1,27 @@
+123 // 369
+
+123
+  6
+  9
+
+1234 // 481216
+5   8
+9   12
+13   16
+
+12345 // 510152025
+    10
+    15
+    20
+    25
+
+generálunk le számokat 1 és 9 között 3x 
+generálunk le számokat 1 és 16 között 4x
+generálunk le számokat 1 és 25 között 5x 
+feltételtől függ ,hogy melyiket generáljuk (if vagy swich)
+
+ellenőrízni kell ,hogy növekvő sorba vannak e vagy nem 
+HA igen tovább megy és ellenőzni ,hogy az egymás mellett lévő számok között ugyan annyi a külömbség
+
+ezeket bele egy tömbe 
+ha ezek mind igazak akkor kerülnek bele a tömbe!
