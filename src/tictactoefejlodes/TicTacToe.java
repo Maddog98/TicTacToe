@@ -79,15 +79,14 @@ public class TicTacToe extends JApplet implements ActionListener {
     break;
   
 }}
-  // talán jó
     
   @Override
   public void actionPerformed(ActionEvent a) {
       logika();
-//   JButton btAktuális=(JButton)a.getSource();
+  
     String játékos;
-//   JComboBox meretvalszto =(JComboBox)a.getSource();
-//   
+   
+   
 //    if(btAktuális==btÚjJáték) {
 //      lépésSzám=0;
 //      játékos=felirat[(lépésSzám+1)%2];
