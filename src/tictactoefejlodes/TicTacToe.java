@@ -21,7 +21,7 @@ public class TicTacToe extends JApplet
 //faszom
     @Override
     public void init() {
-        setSize(300, 350);
+        setSize(new Dimension(300, 348));
         JPanel pnEszköztár = new JPanel();
         pnEszköztár.add(btÚjJáték);
         pnEszköztár.add(meretvalszto);
@@ -60,6 +60,7 @@ public class TicTacToe extends JApplet
         int xyIndex = meretvalszto.getSelectedIndex();
         switch (xyIndex) {
             case 0:
+        setSize(new Dimension(300, 348));
                 System.out.println(xyIndex);
                 x = 9;
                 pnJátéktér.removeAll();
@@ -70,6 +71,7 @@ public class TicTacToe extends JApplet
                 //gridLayout=new GridLayout(3, 3);
                 break;
             case 1:
+                setSize(new Dimension(300, 349));
                 x = 16;
                 y = 4;
                 pnJátéktér.setLayout(new GridLayout(y, y));
@@ -80,6 +82,7 @@ public class TicTacToe extends JApplet
 
                 break;
             case 2:
+                setSize(new Dimension(300, 350));
                 x = 25;
                 y = 5;
                 pnJátéktér.setLayout(new GridLayout(y, y));
@@ -121,7 +124,7 @@ public class TicTacToe extends JApplet
                 for (int i = 1; i <= x; i++) {
                     btGomb[i].setEnabled(false);
                 }
-            } else if (lépésSzám == 9) {
+            } else if (lépésSzám == x) {
                 lbÜzenet.setText("Eredmény: döntetlen!");
             }
         }
@@ -129,14 +132,17 @@ public class TicTacToe extends JApplet
 
     private String nyertes() {
         int[] nyerő = {123, 456, 789, 147, 258, 369, 159, 357};
-        String százas = "", tízes, egyes;
+        String /*tízezres*/százas = ""/*,ezres,százas*/, tízes, egyes;
         for (int i : nyerő) {
-            százas = btGomb[i / 100].getText();
-            tízes = btGomb[i % 100 / 10].getText();
-            egyes = btGomb[i % 100 % 10].getText();
-            System.out.println("\n" + i + ": " + százas + " " + tízes + " " + egyes);
-            if (százas.equals(tízes) && tízes.equals(egyes)) {
-                return százas;
+//            tízezres = btGomb[i/10000].getText();
+//            ezres = btGomb[i/10000/10].getText();
+            százas = btGomb[i / 100/*00 /10*/].getText();
+            tízes = btGomb[i % 100/*00*/ / 10].getText();
+            egyes = btGomb[i % 100/*00*/ % 10].getText();
+            
+            System.out.println("\n" + i + ": "/*+tízezres+" "+ezres +" "*/+ százas + " " + tízes + " " + egyes);
+            if (/*tízezres.equals(ezres)&&ezres.equals(százas)&&*/százas.equals(tízes) && tízes.equals(egyes)) {
+                return /*tízezres*/ százas;
             }
         }
         return "";
