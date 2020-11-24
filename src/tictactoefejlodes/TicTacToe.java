@@ -79,7 +79,11 @@ public class TicTacToe extends JApplet implements ActionListener {
     break;
   
 }}
+<<<<<<< HEAD
   //fasza
+=======
+  // talán jó
+>>>>>>> fff1be046d1a2c7acc9f9cab5355cb576ef0391a
     
   @Override
   public void actionPerformed(ActionEvent a) {
@@ -131,3 +135,4 @@ JButton btAktuális=(JButton)a.getSource();
 
     
 }
+
