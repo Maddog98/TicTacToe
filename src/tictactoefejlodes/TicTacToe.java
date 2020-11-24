@@ -20,6 +20,7 @@ public class TicTacToe extends JApplet
     private int x = 9;
 //valtozas
     //ige
+    //most
     @Override
     public void init() {
         setSize(300, 350);
