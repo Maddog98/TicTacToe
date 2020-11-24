@@ -28,7 +28,11 @@ public class TicTacToe extends JApplet implements ActionListener {
         pnEszköztár.add(lbÜzenet);
         add(pnEszköztár, BorderLayout.NORTH);
         general(x);
-        meretvalszto.addActionListener(this);
+        meretvalszto.addActionListener(new ActionListener(){  
+    public void actionPerformed(ActionEvent e){  
+            logika();
+    }  
+    });  
     }
 
     public void general(int x) {
@@ -49,6 +53,7 @@ public class TicTacToe extends JApplet implements ActionListener {
     // még mindig nem jÓ?
     //most?
     //???
+
     private void logika() {
 
         int xyIndex = meretvalszto.getSelectedIndex();
@@ -56,7 +61,7 @@ public class TicTacToe extends JApplet implements ActionListener {
             case 0:
                 System.out.println(xyIndex);
                 x = 9;
-                pnJátéktér.removeAll();
+pnJátéktér.removeAll();                
                 y = 3;
                 pnJátéktér.setLayout(new GridLayout(y, y));
                 System.out.println(x);
@@ -68,7 +73,7 @@ public class TicTacToe extends JApplet implements ActionListener {
                 y = 4;
                 pnJátéktér.setLayout(new GridLayout(y, y));
                 System.out.println(xyIndex);
-                pnJátéktér.removeAll();
+pnJátéktér.removeAll();                
                 System.out.println(x);
                 general(x);
 
@@ -89,36 +94,36 @@ public class TicTacToe extends JApplet implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent a) {
-        logika();
+       
         JButton btAktuális = (JButton) a.getSource();
-
         String játékos;
+//       
+        if (btAktuális == btÚjJáték) {
+            lépésSzám = 0;
+            játékos = felirat[(lépésSzám + 1) % 2];
+            lbÜzenet.setText((lépésSzám + 1) + ". lépés: " + játékos);
+            /*3x3=9,4x4=16,5x5=25*/
+            for (int i = 1; i <= x; i++) {
+                btGomb[i].setText("");
+                btGomb[i].setEnabled(true);
 
-//    if(btAktuális==btÚjJáték) {
-//      lépésSzám=0;
-//      játékos=felirat[(lépésSzám+1)%2];
-//      lbÜzenet.setText((lépésSzám+1)+". lépés: "+játékos);
-//     /*3x3=9,4x4=16,5x5=25*/for(int i=1; i<=x; i++) {
-//        btGomb[i].setText("");
-//        btGomb[i].setEnabled(true);
-//        
-//      }
-//    }
-//    else {  //pnJátéktér nyomógombjai
-//      lépésSzám++;
-//      játékos=felirat[(lépésSzám+1)%2];
-//      lbÜzenet.setText((lépésSzám+1)+". lépés: "+játékos);
-//      btAktuális.setText(felirat[lépésSzám%2]);
-//      btAktuális.setEnabled(false);
-//      String nyertes=nyertes();
-//      if(!nyertes.equals("")) {
-//        lbÜzenet.setText("Eredmény: "+nyertes+" nyert!");
-//        for(int i=1; i<=x; i++)
-//          btGomb[i].setEnabled(false);
-//      }
-//      else if(lépésSzám==9)
-//        lbÜzenet.setText("Eredmény: döntetlen!");
-//    }
+            }
+        } else {  //pnJátéktér nyomógombjai
+            lépésSzám++;
+            játékos = felirat[(lépésSzám + 1) % 2];
+            lbÜzenet.setText((lépésSzám + 1) + ". lépés: " + játékos);
+            btAktuális.setText(felirat[lépésSzám % 2]);
+            btAktuális.setEnabled(false);
+            String nyertes = nyertes();
+            if (!nyertes.equals("")) {
+                lbÜzenet.setText("Eredmény: " + nyertes + " nyert!");
+                for (int i = 1; i <= x; i++) {
+                    btGomb[i].setEnabled(false);
+                }
+            } else if (lépésSzám == 9) {
+                lbÜzenet.setText("Eredmény: döntetlen!");
+            }
+        }
     }
 
     private String nyertes() {
