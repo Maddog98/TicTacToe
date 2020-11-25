@@ -89,7 +89,6 @@ public class TicTacToe extends JApplet
                 pnJátéktér.removeAll();
                 System.out.println(x);
                 general(x);
-
                 break;
 
         }
@@ -147,13 +146,9 @@ public class TicTacToe extends JApplet
 
     private String nyertes() {
         int[] nyerő = {123, 456, 789, 147, 258, 369, 159, 357};
-
-        int[] nyerő3;
-        for (int i = 1; i <= 3; i++) {
-            System.out.println(i);
-        }
+        int [] nyeroS={};
         String /*tízezres*/ százas = ""/*,ezres,százas*/, tízes, egyes;
-
+        
         for (int i : nyerő) {
 //            tízezres = btGomb[i/10000].getText();
 //            ezres = btGomb[i/10000/10].getText();
@@ -169,7 +164,8 @@ public class TicTacToe extends JApplet
                 return /*tízezres*/ százas;
             }
         }
-        return "";        //int[] nyerő = [];
+        return "";       
+        //int[] nyerő = [];
 
     }
 }
